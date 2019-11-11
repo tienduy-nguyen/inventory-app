@@ -18,7 +18,7 @@ The solution is from [HowKteam.com](https://www.howkteam.vn/course/lap-trinh-pha
 | IdSuplier   |             |Phone       |Phone          |             |Count         |               |Count          |
 | QRCode      |             |Email       |Email          |             |InputPrice    |               |IdCustomer     |
 | BarCode     |             |MoreInfo    |MoreInfo       |             |OutputPrice   |               |DateOutput     |
-|             |             |ContactDate |ContactDate    |             |Status        |               |Status         |
+|             |             |ContractDate|ContractDate   |             |Status        |               |Status         |
 
 
 
