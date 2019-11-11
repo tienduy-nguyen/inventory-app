@@ -4,15 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WareHouseManagement.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        // mọi thứ xử lý sẽ nằm trong này
+        public ICommand LoadedWindowCommand { get; set; }
+        public bool IsLoaded = false;
         public MainViewModel()
         {
-            MessageBox.Show("Đã vào trong MainViewModel -> DataContext của mainwindow.xaml");
+            LoadedWindowCommand = new RelayCommand<object>(
+                (p) => true,
+                (p) =>
+                {
+                    IsLoaded = true;
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.ShowDialog();
+                });
         }
     }
 }
