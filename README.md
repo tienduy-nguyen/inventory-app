@@ -8,7 +8,22 @@ The solution is from [HowKteam.com](https://www.howkteam.vn/course/lap-trinh-pha
 - Using Material Design
 - Using User Controler
 
+## CURD
 
+|Object       |Unit         |Suplier     |Customer       |Input        |Input Info    | Output        | Output Info   |                                                                                                                 
+| ------------|-------------| -----------|---------------|-------------|--------------|---------------|---------------|
+| Id          |Id           |Id          |Id             |Id           |Id            |Id             |Id             |
+| DisplayName |DisplayName  |DisplayName |DisplayName    |DateInput    |IdObject      |DateInput      |IdObject       |
+| IdUnit      |             |Address     |Address        |             |IdInput       |               |IdInput        |
+| IdSuplier   |             |Phone       |Phone          |             |Count         |               |Count          |
+| QRCode      |             |Email       |Email          |             |InputPrice    |               |IdCustomer     |
+| BarCode     |             |MoreInfo    |MoreInfo       |             |OutputPrice   |               |DateOutput     |
+|             |             |ContactDate |ContactDate    |             |Status        |               |Status         |
+
+
+
+
+## UI
 
 <p align="center">
   <img src="https://i.imgur.com/gtW4k9n.png" alt="Login" />
