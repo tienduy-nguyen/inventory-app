@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace WareHouseManagement.ViewModel
+namespace WarehouseManagement.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {

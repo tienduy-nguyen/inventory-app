@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WareHouseManagement.Properties
+namespace WarehouseManagement.Properties
 {
 
 

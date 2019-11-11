@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WareHouseManagement.ViewModel
+namespace WarehouseManagement.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

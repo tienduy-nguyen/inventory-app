@@ -1,7 +1,7 @@
-﻿<Application x:Class="WareHouseManagement.App"
+﻿<Application x:Class="WarehouseManagement.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WareHouseManagement"
+             xmlns:local="clr-namespace:WarehouseManagement"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

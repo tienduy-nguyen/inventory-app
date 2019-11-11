@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WareHouseManagement.ViewModel;
+using WarehouseManagement.ViewModel;
 
-namespace WareHouseManagement.UserControlFolder
+namespace WarehouseManagement.UserControlFolder
 {
     /// <summary>
     /// Interaction logic for ControlBarUC.xaml

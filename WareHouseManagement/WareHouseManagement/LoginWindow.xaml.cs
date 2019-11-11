@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WareHouseManagement
+namespace WarehouseManagement
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
