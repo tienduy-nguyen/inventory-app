@@ -1,0 +1,110 @@
+﻿<Window x:Class="WareHouseManagement.InputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WareHouseManagement"
+        mc:Ignorable="d"
+
+        xmlns:uc="clr-namespace:WarehouseManagement.UserControlFolder"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource MainVM}"
+
+        ResizeMode="NoResize" WindowStyle="None"
+        Title="Goods Receipt" Height="500" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Name="inputWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=inputWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Elements biding from selected items -->
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <WrapPanel>
+                    <TextBox
+                        Text="{Binding ObjectDisplayName, UpdateSourceTrigger=PropertyChanged}" 
+                        materialDesign:HintAssist.Hint="Material Name" Margin="5 5 15 5"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <DatePicker
+                        SelectedDate="{Binding DateInput, UpdateSourceTrigger=PropertyChanged}"
+                        Width="100" Margin="5 5 15 5"
+                        materialDesign:HintAssist.Hint="Date Input"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <TextBox
+                        Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" 
+                        materialDesign:HintAssist.Hint="Count" Margin="5 5 15 5"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        Text="{Binding PriceInput, UpdateSourceTrigger=PropertyChanged}" 
+                        materialDesign:HintAssist.Hint="Price Input" Margin="5 5 15 5"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        Text="{Binding PriceOutput, UpdateSourceTrigger=PropertyChanged}" 
+                        materialDesign:HintAssist.Hint="Price Output" Margin="5 5 15 5"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        Text="{Binding Status, UpdateSourceTrigger=PropertyChanged}" 
+                        materialDesign:HintAssist.Hint="Status" Margin="5 5 15 5"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button Content="Add" 
+                            Command="{Binding AddCommand}"
+                            Margin="5" Width="100"></Button>
+                    <Button Content="Edit" 
+                            Command="{Binding EditCommand}"
+                            Margin="5" Width="100"></Button>
+                    <Button Content="Delete" 
+                            Command="{Binding DeleteCommand}"
+                            Margin="5" Width="100"></Button>
+                </WrapPanel>
+
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding list}" 
+                              SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Material" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
+                                <GridViewColumn Header="Date Input" DisplayMemberBinding="{Binding Input.DateInput}"></GridViewColumn>
+                                <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                                <GridViewColumn Header="Price Input" DisplayMemberBinding="{Binding  PriceInput}"></GridViewColumn>
+                                <GridViewColumn Header="Price Output" DisplayMemberBinding="{Binding  PriceOutput}"></GridViewColumn>
+                                <GridViewColumn Header="Status" DisplayMemberBinding="{Binding  Status}"></GridViewColumn>
+                                
+                            </GridView>
+                        </ListView.View>
+
+                    </ListView>
+                </ScrollViewer>
+
+            </materialDesign:Card>
+
+
+        </Grid>
+    </Grid>
+
+</Window>

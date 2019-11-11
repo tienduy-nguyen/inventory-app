@@ -68,27 +68,29 @@
 
 
                     <!--Button Goosd Receip -->
-                        <Button Grid.Column="0"
-                            ToolTip="Goods Receipt" >
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                    <TextBlock Text ="Goods Receipt" FontSize="10"></TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                    <materialDesign:PackIcon Kind="ArrowDownBoldCircleOutline" 
+                    <Button Grid.Column="0"
+                            ToolTip="Goods Receipt" 
+                            Command="{Binding InputWindowCommand}">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                <TextBlock Text ="Goods Receipt" FontSize="10"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="ArrowDownBoldCircleOutline" 
                                                              Width="24"
                                                              Height="24"/>
-                                </Grid>
                             </Grid>
-                        </Button>
+                        </Grid>
+                    </Button>
 
                     <!--Button Goods Issue -->
                     <Button Grid.Column="1"
-                        ToolTip="Goods Issue" >
+                        ToolTip="Goods Issue"
+                        Command="{Binding OutputWindowCommand}">
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -107,7 +109,8 @@
 
                     <!--Button Meterial -->
                     <Button Grid.Column="2"
-                        ToolTip="Materials" >
+                        ToolTip="Materials"
+                        Command="{Binding ObjectWindowCommand}">
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -125,7 +128,8 @@
                     </Button>
                     <!--Button Units -->
                     <Button Grid.Column="3"
-                        ToolTip="Unit" >
+                        ToolTip="Unit" 
+                        Command="{Binding UnitWindowCommand}">
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -143,7 +147,8 @@
                     </Button>
                     <!--Button Suppiers -->
                     <Button Grid.Column="4"
-                        ToolTip="Suppliers" >
+                        ToolTip="Suppliers" 
+                        Command="{Binding SuplierWindowCommand}">
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -162,7 +167,8 @@
 
                     <!--Button Customers -->
                     <Button Grid.Column="5"
-                        ToolTip="Customers" >
+                        ToolTip="Customers" 
+                        Command="{Binding CustomerWindowCommand}">
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -181,7 +187,8 @@
 
                     <!--Button Users -->
                     <Button Grid.Column="6"
-                            ToolTip="User" >
+                            ToolTip="User" 
+                            Command ="{Binding UserWindowCommand}">
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -250,7 +257,7 @@
                                         Margin="20 5 5 5">
                                     </Button>
                                 </Grid>
-                                   
+
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Separator Margin="5"></Separator>
@@ -259,10 +266,10 @@
 
 
                             <Grid Grid.Row="2">
-                              <Grid.ColumnDefinitions>
-                                  <ColumnDefinition></ColumnDefinition>
-                                  <ColumnDefinition></ColumnDefinition>
-                                  <ColumnDefinition></ColumnDefinition>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
                                     <materialDesign:Card
@@ -294,10 +301,10 @@
                                             <materialDesign:PopupBox Grid.Row="0"
                                                     HorizontalAlignment="Right"
                                                     Padding="2 0 2 0">
-                                                    <StackPanel>
-                                                        <!--Add something -->
-                                                    </StackPanel>
-                                                </materialDesign:PopupBox>
+                                                <StackPanel>
+                                                    <!--Add something -->
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
                                         </Grid>
                                     </materialDesign:Card>
                                 </Grid>
@@ -430,7 +437,7 @@
                         <Grid Grid.Row="1">
                             <Separator Margin="5"></Separator>
                         </Grid>
-                    
+
                         <Grid Grid.Row="2">
                             <ListView>
                                 <ListView.View>
@@ -444,7 +451,7 @@
                         </Grid>
                     </Grid>
                 </materialDesign:Card>
-                
+
 
             </Grid>
         </Grid>
