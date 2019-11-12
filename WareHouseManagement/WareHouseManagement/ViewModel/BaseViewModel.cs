@@ -25,17 +25,15 @@ namespace WarehouseManagement.ViewModel
 
         public RelayCommand(Predicate<T> canExecute, Action<T> execute)
         {
-            if (execute == null)
-                throw new ArgumentNullException("execute");
             _canExecute = canExecute;
-            _execute = execute;
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
         }
 
         public bool CanExecute(object parameter)
         {
             try
             {
-                return _canExecute == null ? true : _canExecute((T)parameter);
+                return _canExecute?.Invoke((T)parameter) ?? true;
             }
             catch
             {
@@ -50,8 +48,8 @@ namespace WarehouseManagement.ViewModel
 
         public event EventHandler CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
     }
 }
