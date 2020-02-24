@@ -46,8 +46,22 @@ namespace WarehouseManagement.ViewModel
         private void LoadWindowExecuted(object param)
         {
             IsLoaded = true;
+            if (param is null) return;
+            var win = param as Window;
+            win.Hide();
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
+            if (loginWindow.DataContext == null) return;
+            var loginVM = loginWindow.DataContext as LoginViewModel;
+            if (loginVM.IsLogin)
+            {
+                win.Show();
+            } else
+            {
+                win.Hide();
+            }
+          
+
         }
         private void UnitWindowExecuted(object param)
         {
