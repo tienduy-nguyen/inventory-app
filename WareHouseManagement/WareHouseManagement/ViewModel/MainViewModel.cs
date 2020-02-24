@@ -7,83 +7,84 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WareHouseManagement;
+using WareHouseManagement.Models;
 
 namespace WarehouseManagement.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        public ICommand LoadedWindowCommand { get; set; }
-        public ICommand UnitWindowCommand { get; set; }
-        public ICommand SuplierWindowCommand { get; set; }
-        public ICommand CustomerWindowCommand { get; set; }
-        public ICommand ObjectWindowCommand { get; set; }
-        public ICommand UserWindowCommand { get; set; }
-        public ICommand InputWindowCommand { get; set; }
-        public ICommand OutputWindowCommand { get; set; }
+        public RelayCommand LoadedWindowCommand { get; set; }
+        public RelayCommand UnitWindowCommand { get; set; }
+        public RelayCommand SuplierWindowCommand { get; set; }
+        public RelayCommand CustomerWindowCommand { get; set; }
+        public RelayCommand ObjectWindowCommand { get; set; }
+        public RelayCommand UserWindowCommand { get; set; }
+        public RelayCommand InputWindowCommand { get; set; }
+        public RelayCommand OutputWindowCommand { get; set; }
         public bool IsLoaded = false;
+
+
         public MainViewModel()
         {
-            LoadedWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    IsLoaded = true;
-                    LoginWindow loginWindow = new LoginWindow();
-                    loginWindow.ShowDialog();
-                });
+            LoadedWindowCommand = new RelayCommand(param => this.LoadWindowExecuted(param));
+            UnitWindowCommand = new RelayCommand(param => this.UnitWindowExecuted(param));
+            SuplierWindowCommand = new RelayCommand(param => this.SupplierWindowExecuted(param));
+            CustomerWindowCommand = new RelayCommand(param => this.CustomerWindowExecuted(param));
+            ObjectWindowCommand = new RelayCommand(param => this.MaterialWindowExecuted(param));
+            UserWindowCommand = new RelayCommand(param => this.UserWindowExecuted(param));
+            InputWindowCommand = new RelayCommand(param => this.InputWindowExecuted(param));
+            OutputWindowCommand = new RelayCommand(param => this.OutputWindowExecuted(param));
 
-            UnitWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    UnitWindow uw = new UnitWindow();;
-                    uw.ShowDialog();
-                });
+            var a = DataProvider.Instance.DB.Users;
 
-            SuplierWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    SuplierWindow sw = new SuplierWindow() ;
-                    sw.ShowDialog();
-                });
-
-            CustomerWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    CustomerWindow  cw = new CustomerWindow();
-                    cw.ShowDialog();
-                });
-
-            ObjectWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    ObjectWindow ow = new ObjectWindow();
-                    ow.ShowDialog();
-                });
-            UserWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    UserWindow uw = new UserWindow();
-                    uw.ShowDialog();
-                });
-            InputWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    InputWindow iw = new InputWindow();
-                    iw.ShowDialog();
-                });
-            OutputWindowCommand = new RelayCommand<object>(
-                (p) => true,
-                (p) =>
-                {
-                    OutputWindow iw = new OutputWindow();
-                    iw.ShowDialog();
-                });
         }
+
+        
+
+
+        #region RelayCommand
+        private void LoadWindowExecuted(object param)
+        {
+            IsLoaded = true;
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
+        }
+        private void UnitWindowExecuted(object param)
+        {
+            UnitWindow uw = new UnitWindow(); ;
+            uw.ShowDialog();
+        }
+        private void SupplierWindowExecuted(object param)
+        {
+            SuplierWindow sw = new SuplierWindow();
+            sw.ShowDialog();
+        }
+        private void CustomerWindowExecuted(object param)
+        {
+            CustomerWindow cw = new CustomerWindow();
+            cw.ShowDialog();
+        }
+        private void MaterialWindowExecuted(object param)
+        {
+            ObjectWindow ow = new ObjectWindow();
+            ow.ShowDialog();
+        }
+        private void UserWindowExecuted(object param)
+        {
+            UserWindow uw = new UserWindow();
+            uw.ShowDialog();
+        }
+        private void InputWindowExecuted(object param)
+        {
+            InputWindow iw = new InputWindow();
+            iw.ShowDialog();
+        }
+        private void OutputWindowExecuted(object param)
+        {
+            OutputWindow iw = new OutputWindow();
+            iw.ShowDialog();
+        }
+
+        #endregion
     }
 }

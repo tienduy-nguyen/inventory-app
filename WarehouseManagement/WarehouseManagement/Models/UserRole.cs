@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WareHouseManagement.Model
+namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;

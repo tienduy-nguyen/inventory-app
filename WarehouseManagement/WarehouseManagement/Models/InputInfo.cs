@@ -7,22 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WareHouseManagement.Model
+namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class OutputInfo
+    public partial class InputInfo
     {
         public string Id { get; set; }
         public string IdObject { get; set; }
-        public string IdOutputInfo { get; set; }
-        public int IdCustomer { get; set; }
+        public string IdInput { get; set; }
         public Nullable<int> Count { get; set; }
+        public Nullable<double> InputPrice { get; set; }
+        public Nullable<double> OutputPrice { get; set; }
         public string Status { get; set; }
     
-        public virtual Customer Customer { get; set; }
+        public virtual Input Input { get; set; }
         public virtual Object Object { get; set; }
-        public virtual Output Output { get; set; }
     }
 }

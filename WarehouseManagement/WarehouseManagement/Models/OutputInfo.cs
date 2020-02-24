@@ -7,19 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WareHouseManagement.Model
+namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class OutputInfo
     {
-        public int Id { get; set; }
-        public string DisplayName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public int IdRole { get; set; }
+        public string Id { get; set; }
+        public string IdObject { get; set; }
+        public string IdOutputInfo { get; set; }
+        public int IdCustomer { get; set; }
+        public Nullable<int> Count { get; set; }
+        public string Status { get; set; }
     
-        public virtual UserRole UserRole { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Object Object { get; set; }
+        public virtual Output Output { get; set; }
     }
 }

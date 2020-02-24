@@ -12,60 +12,62 @@ namespace WarehouseManagement.ViewModel
     public class ControlBarViewmModel: BaseViewModel
     {
         #region commands
-        public  ICommand CloseWindowCommand { get; set; }
-        public ICommand MaximizeWindowCommand { get; set; }
-        public ICommand MinimizeWindowCommand { get; set; }
-        public ICommand MouseMoveWindowCommand { get; set; }
+        public RelayCommand CloseWindowCommand { get; set; }
+        public RelayCommand MaximizeWindowCommand { get; set; }
+        public RelayCommand  MinimizeWindowCommand { get; set; }
+        public RelayCommand  MouseMoveWindowCommand { get; set; }
         #endregion
 
         public ControlBarViewmModel()
         {
-            CloseWindowCommand = new RelayCommand<UserControl>(
-                (p) => !(p is null),
-                (p) =>
-                {
-                    FrameworkElement window = GetWindowParent(p);
-                    var w = window as Window;
-                    w?.Close();
-                });
-
-            MaximizeWindowCommand = new RelayCommand<UserControl>(
-                (p) => !(p is null),
-                (p) =>
-                {
-                    FrameworkElement window = GetWindowParent(p);
-                    var w = window as Window;
-                    if (w != null)
-                    {
-                        w.WindowState = w.WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
-                    }
-                });
-            MinimizeWindowCommand = new RelayCommand<UserControl>(
-                (p) => !(p is null),
-                (p) =>
-                {
-                    FrameworkElement window = GetWindowParent(p);
-                    var w = window as Window;
-                    if (w != null)
-                    {
-                        w.WindowState = w.WindowState != WindowState.Minimized ? WindowState.Minimized : WindowState.Normal;
-                    }
-                });
-
-            MouseMoveWindowCommand = new RelayCommand<UserControl>(
-                (p) => !(p is null),
-                (p) =>
-                {
-                    FrameworkElement window = GetWindowParent(p);
-                    var w = window as Window;
-                    if (w != null)
-                    {
-                       w.DragMove();
-                    }
-                });
+            CloseWindowCommand = new RelayCommand(param => this.CloseWindowExecuted(param));
+            MaximizeWindowCommand = new RelayCommand(param => this.MaximizeWindowExecuted(param));
+            MinimizeWindowCommand = new RelayCommand(param => this.MinimizeWindowExecuted(param));
+            MouseMoveWindowCommand = new RelayCommand(param => this.MouseMoveWindowExecuted(param));
         }
 
-        FrameworkElement GetWindowParent(UserControl p)
+        
+
+        #region Relay command
+        private void CloseWindowExecuted(object p)
+        {
+            FrameworkElement window = GetWindowParent((UserControl)p);
+            var w = window as Window;
+            w?.Close();
+        }
+        private void MaximizeWindowExecuted(object p)
+        {
+            FrameworkElement window = GetWindowParent((UserControl)p);
+            var w = window as Window;
+            if (w != null)
+            {
+                w.WindowState = w.WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
+            }
+        }
+        private void MinimizeWindowExecuted(object p)
+        {
+            FrameworkElement window = GetWindowParent((UserControl)p);
+            var w = window as Window;
+            if (w != null)
+            {
+                w.WindowState = w.WindowState != WindowState.Minimized ? WindowState.Minimized : WindowState.Normal;
+            }
+        }
+        private void MouseMoveWindowExecuted(object p)
+        {
+            FrameworkElement window = GetWindowParent((UserControl)p);
+            var w = window as Window;
+            if (w != null)
+            {
+                w.DragMove();
+            }
+        }
+
+
+
+        #endregion
+
+        private FrameworkElement GetWindowParent(UserControl p)
         {
             FrameworkElement parent = p;
             while (parent.Parent != null)

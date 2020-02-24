@@ -18,38 +18,78 @@ namespace WarehouseManagement.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    class RelayCommand<T> : ICommand
+    public class RelayCommand : ICommand
     {
-        private readonly Predicate<T> _canExecute;
-        private readonly Action<T> _execute;
+        private Action<object> execute;
 
-        public RelayCommand(Predicate<T> canExecute, Action<T> execute)
+        private Predicate<object> canExecute;
+
+        private event EventHandler CanExecuteChangedInternal;
+
+        public RelayCommand(Action<object> execute) : this(execute, DefaultCanExecute)
         {
-            _canExecute = canExecute;
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
         }
 
-        public bool CanExecute(object parameter)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
-            try
+            if (execute == null)
             {
-                return _canExecute?.Invoke((T)parameter) ?? true;
+                throw new ArgumentNullException("execute");
             }
-            catch
-            {
-                return true;
-            }
-        }
 
-        public void Execute(object parameter)
-        {
-            _execute((T)parameter);
+            if (canExecute == null)
+            {
+                throw new ArgumentNullException("canExecute");
+            }
+
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
 
         public event EventHandler CanExecuteChanged
         {
-            add => CommandManager.RequerySuggested += value;
-            remove => CommandManager.RequerySuggested -= value;
+            add
+            {
+                CommandManager.RequerySuggested += value;
+                this.CanExecuteChangedInternal += value;
+            }
+
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+                this.CanExecuteChangedInternal -= value;
+            }
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return this.canExecute != null && this.canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            this.execute(parameter);
+        }
+
+        public void OnCanExecuteChanged()
+        {
+            EventHandler handler = this.CanExecuteChangedInternal;
+            if (handler != null)
+            {
+                //DispatcherHelper.BeginInvokeOnUIThread(() => handler.Invoke(this, EventArgs.Empty));
+                handler.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public void Destroy()
+        {
+            this.canExecute = _ => false;
+            this.execute = _ => { return; };
+        }
+
+        private static bool DefaultCanExecute(object parameter)
+        {
+            return true;
         }
     }
 }

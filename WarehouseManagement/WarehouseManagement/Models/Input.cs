@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WareHouseManagement.Model
+namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Unit
+    public partial class Input
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Unit()
+        public Input()
         {
-            this.Objects = new HashSet<Object>();
+            this.InputInfoes = new HashSet<InputInfo>();
         }
     
-        public int Id { get; set; }
-        public string DisplayName { get; set; }
+        public string Id { get; set; }
+        public Nullable<System.DateTime> DateInput { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Object> Objects { get; set; }
+        public virtual ICollection<InputInfo> InputInfoes { get; set; }
     }
 }
