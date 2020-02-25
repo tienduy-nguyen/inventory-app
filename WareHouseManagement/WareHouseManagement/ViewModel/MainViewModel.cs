@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,12 @@ namespace WarehouseManagement.ViewModel
         public RelayCommand InputWindowCommand { get; set; }
         public RelayCommand OutputWindowCommand { get; set; }
         public bool IsLoaded = false;
+
+        private ObservableCollection<Stock> _stockList = new ObservableCollection<Stock>();
+
+
+        public ObservableCollection<Stock> StockList { get => _stockList; set { _stockList = value; OnPropertyChanged(); } }
+
 
 
         public MainViewModel()
@@ -56,6 +63,8 @@ namespace WarehouseManagement.ViewModel
             if (loginVM.IsLogin)
             {
                 win.Show();
+                LoadStockData();
+
             } else
             {
                 win.Hide();
@@ -99,6 +108,42 @@ namespace WarehouseManagement.ViewModel
             iw.ShowDialog();
         }
 
+        #endregion
+
+        #region private method
+        private void LoadStockData()
+        {
+            StockList = new ObservableCollection<Stock>();
+            var objectList = DataProvider.Instance.DB.Objects;
+            int i = 1;
+            foreach(var item in objectList)
+            {
+                var inputList = DataProvider.Instance.DB.InputInfoes.Where(x => x.IdObject == item.Id);
+                var outputList = DataProvider.Instance.DB.OutputInfoes.Where(x => x.IdObject == item.Id);
+
+                int sumInput = 0;
+                int sumOutput = 0;
+
+                if(inputList != null)
+                {
+                    sumInput = (int)inputList.Sum(p => p.Count);
+                }
+                if (outputList != null)
+                {
+                    sumOutput = (int)outputList.Sum(p => p.Count);
+                }
+                Stock stock = new Stock();
+                stock.Number = i;
+                stock.Count = sumInput - sumOutput;
+                stock.Object = item;
+
+                StockList.Add(stock);
+
+                ++i;
+
+            }
+            
+        }
         #endregion
     }
 }

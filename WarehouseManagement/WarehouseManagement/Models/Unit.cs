@@ -11,8 +11,9 @@ namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Unit
+    using WarehouseManagement.ViewModel;
+
+    public partial class Unit : BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Unit()
@@ -21,7 +22,8 @@ namespace WareHouseManagement.Models
         }
     
         public int Id { get; set; }
-        public string DisplayName { get; set; }
+        private string displayName;
+        public string DisplayName { get => displayName; set { displayName = value;OnPropertyChanged(); } }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Object> Objects { get; set; }
