@@ -11,8 +11,9 @@ namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Object
+    using WarehouseManagement.ViewModel;
+
+    public partial class Object: BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Object()
@@ -20,18 +21,29 @@ namespace WareHouseManagement.Models
             this.InputInfoes = new HashSet<InputInfo>();
             this.OutputInfoes = new HashSet<OutputInfo>();
         }
-    
-        public string Id { get; set; }
-        public string DisplayName { get; set; }
-        public int IdUnit { get; set; }
-        public int IdSupplier { get; set; }
-        public string QRCode { get; set; }
-        public string BarCode { get; set; }
-    
+
+        private string id;
+        public string Id { get => id; set { id = value; OnPropertyChanged(); } }
+        private string displayName;
+        public string DisplayName { get => displayName; set { displayName = value; OnPropertyChanged(); } }
+
+        private int idUnit;
+        public int IdUnit { get => idUnit; set { idUnit = value; OnPropertyChanged(); } }
+        private int idSupplier;
+        public int IdSupplier { get => idSupplier; set { idSupplier = value; OnPropertyChanged(); } }
+
+        public string qRcode;
+        public string QRCode { get => qRcode; set { qRcode = value; OnPropertyChanged(); } }
+        private string barCode;
+        public string BarCode { get => barCode; set { barCode = value; OnPropertyChanged(); } }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InputInfo> InputInfoes { get; set; }
-        public virtual Supplier Supplier { get; set; }
-        public virtual Unit Unit { get; set; }
+        private Supplier supplier;
+        public virtual Supplier Supplier { get => supplier; set { supplier = value; OnPropertyChanged(); } }
+
+        private Unit unit;
+        public virtual Unit Unit { get => unit; set { unit = value; OnPropertyChanged(); } }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OutputInfo> OutputInfoes { get; set; }
     }
