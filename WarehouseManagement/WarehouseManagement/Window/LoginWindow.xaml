@@ -21,6 +21,7 @@
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
+    Topmost="True"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -36,7 +37,7 @@
         <materialDesign:Card
             Grid.Row="1"
             Width="330"
-            Height="150"
+            Height="200"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <Grid>
@@ -46,6 +47,7 @@
                     </Style>
                 </Grid.Resources>
                 <Grid.RowDefinitions>
+                    <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
@@ -96,6 +98,10 @@
                         IsCancel="True"
                         Style="{StaticResource MaterialDesignRaisedButton}" />
                 </Grid>
+                <CheckBox
+                    x:Name="cbxSavePassWord"
+                    Grid.Row="3"
+                    Content="Save account" />
             </Grid>
         </materialDesign:Card>
     </Grid>

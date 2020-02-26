@@ -9,7 +9,7 @@ namespace WarehouseManagement.ViewModel
     {
         public RelayCommand AddCommand { get; set; }
         public RelayCommand EditCommand { get; set; }
-        public RelayCommand RemoveCommand { get; set; }
+        public RelayCommand DeleteCommand { get; set; }
 
         private ObservableCollection<Unit> list;
         private Unit selectItem;
@@ -50,7 +50,7 @@ namespace WarehouseManagement.ViewModel
                 return true;
             });
 
-            RemoveCommand = new RelayCommand(param => this.RemoveExecuted(param), p =>
+            DeleteCommand = new RelayCommand(param => this.RemoveExecuted(param), p =>
             {
                 if (SelectItem == null) return false;
                 return true;

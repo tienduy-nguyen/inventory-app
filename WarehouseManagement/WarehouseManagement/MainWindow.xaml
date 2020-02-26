@@ -10,7 +10,7 @@
     xmlns:uc="clr-namespace:WarehouseManagement.UserControlFolder"
     Name="mainWindow"
     Title="MainWindow"
-    Width="700"
+    Width="800"
     Height="550"
     Background="{DynamicResource MaterialDesignPaper}"
     DataContext="{StaticResource MainVM}"
