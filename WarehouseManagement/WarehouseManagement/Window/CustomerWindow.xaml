@@ -13,7 +13,7 @@
     Width="600"
     Height="500"
     Background="{DynamicResource MaterialDesignPaper}"
-    DataContext="{StaticResource MainVM}"
+    DataContext="{StaticResource CustomerVM}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     ResizeMode="NoResize"
     TextElement.FontSize="13"
@@ -61,7 +61,7 @@
                         Margin="5,5,15,5"
                         materialDesign:HintAssist.Hint="Email"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox
                         Margin="5,5,15,5"
                         materialDesign:HintAssist.Hint="More Info"
@@ -108,7 +108,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding DisplayName}" Header="Customer" />
                                 <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Address" />
                                 <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Phone" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Mail}" Header="Email" />
                                 <GridViewColumn DisplayMemberBinding="{Binding MoreInfo}" Header="More info" />
                                 <GridViewColumn DisplayMemberBinding="{Binding ContractDate}" Header="Contract date" />
                             </GridView>

@@ -11,23 +11,36 @@ namespace WareHouseManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Customer
+    using WarehouseManagement.ViewModel;
+
+    public partial class Customer:BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
             this.OutputInfoes = new HashSet<OutputInfo>();
         }
-    
-        public int Id { get; set; }
-        public string DisplayName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Mail { get; set; }
-        public string MoreInfo { get; set; }
-        public Nullable<System.DateTime> ContractDate { get; set; }
-    
+
+        private int id;
+        public int Id { get => id; set { id = value; OnPropertyChanged(); } }
+        private string displayName;
+        public string DisplayName { get => displayName; set { displayName = value; OnPropertyChanged(); } }
+
+        private string address;
+        public string Address { get => address; set { address = value; OnPropertyChanged(); } }
+
+        private string phone;
+        public string Phone { get => phone; set { phone = value; OnPropertyChanged(); } }
+
+        private string mail;
+        public string Mail { get => mail; set { mail = value; OnPropertyChanged(); } }
+
+        private string moreInfo;
+        public string MoreInfo { get => moreInfo; set { moreInfo = value; OnPropertyChanged(); } }
+
+        private DateTime? contractDate;
+        public Nullable<System.DateTime> ContractDate { get => contractDate; set { contractDate = value; OnPropertyChanged(); } }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OutputInfo> OutputInfoes { get; set; }
     }
