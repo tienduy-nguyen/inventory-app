@@ -7,6 +7,7 @@ Reference: [HowKteam.com](https://www.howkteam.vn/course/lap-trinh-phan-mem-quan
 - Using MVVM pattern
 - Using Material Design
 - Using UserControler and add it into MainWindow
+- Add, Delete, Edit Database with WPF
 
 ## CURD
 
